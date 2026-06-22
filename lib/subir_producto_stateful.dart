@@ -12,16 +12,16 @@ class _SubirProductoStatefulState extends State<SubirProductoStateful> {
   final TextEditingController _nombreController = TextEditingController();
   final TextEditingController _descripcionController = TextEditingController();
   final TextEditingController _precioController = TextEditingController();
-  String _monedaSeleccionada = 'EUR';
+  String _selectedCurrency = 'EUR';
 
-  void _publicarProducto() {
+  void _publishProduct() {
     final nombre = _nombreController.text;
     final descripcion = _descripcionController.text;
     final precio = _precioController.text;
 
     if (nombre.isEmpty || descripcion.isEmpty || precio.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please complete all fields')),
+        const SnackBar(content: Text('Please fill in all fields')),
       );
       return;
     }
@@ -30,7 +30,7 @@ class _SubirProductoStatefulState extends State<SubirProductoStateful> {
       'usuario': 'current_user',
       'nombreProducto': nombre,
       'descripcion': descripcion,
-      'precio': '$precio $_monedaSeleccionada',
+      'precio': '$precio $_selectedCurrency',
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -71,7 +71,7 @@ class _SubirProductoStatefulState extends State<SubirProductoStateful> {
               TextField(
                 controller: _nombreController,
                 decoration: const InputDecoration(
-                  labelText: 'Product name',
+                  labelText: 'Product Name',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -99,10 +99,10 @@ class _SubirProductoStatefulState extends State<SubirProductoStateful> {
                   ),
                   const SizedBox(width: 16),
                   DropdownButton<String>(
-                    value: _monedaSeleccionada,
+                    value: _selectedCurrency,
                     onChanged: (String? newValue) {
                       setState(() {
-                        _monedaSeleccionada = newValue!;
+                        _selectedCurrency = newValue!;
                       });
                     },
                     items: <String>['EUR', 'USD', 'MXN']
@@ -117,7 +117,7 @@ class _SubirProductoStatefulState extends State<SubirProductoStateful> {
               ),
               const SizedBox(height: 16),
               ElevatedButton(
-                onPressed: _publicarProducto,
+                onPressed: _publishProduct,
                 child: const Text('Publish'),
               ),
             ],

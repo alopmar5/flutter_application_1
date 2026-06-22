@@ -1,30 +1,34 @@
-﻿# Version 2 - Product Detail and Upload Flow
+﻿# Version 3 - Complete App with Registration, Chat, and Profile
 
 ## Objective
-This version improves the marketplace app by adding a product detail screen and a product upload flow. It keeps the core login and product list from version 1.
+This version is the current full application state. It includes registration, login, a product marketplace, chat screens, profile views, and product upload functionality.
 
 ## Intention
-The app now supports viewing details about a product and submitting a new product. The main purpose is to add useful navigation and extend the app’s functionality while preserving the earlier foundation.
+The app aims to be a more complete marketplace experience with multiple user flows and sections. It is designed to demonstrate a fuller mobile application structure with screens for authentication, browsing, communication, and profile management.
 
-This version is designed to help users interact more meaningfully with the marketplace. By adding details and upload capabilities, we want to make it easier for people to share information about their items, compare options, and publish new listings so that the app can support a growing local exchange community.
+This version is meant to make the marketplace more useful in everyday life by helping users connect, exchange information, and manage their items in one place. With registration, chat, profile sections, and product upload support, the app is intended to facilitate trust, personal interaction, and better access to community commerce.
 
 ## Work Plan
-- Keep the login screen from v1
-- Add a detailed product view page
-- Add a product upload flow with a simple form
-- Use a stateful main page to support adding new products
+- Maintain login and registration screens
+- Keep product list, detail, and upload flow from v2
+- Add chat list and individual chat screens
+- Add profile screen with tabs for items, favorites, and purchases
+- Integrate navigation routes to connect all screens
 
 ## How It Works
-- The user logs in and reaches the main product list
-- Tapping a product opens a detail page with product information
-- The floating action button opens a product upload form
-- Submitted products appear in the list after upload
+- The app starts at the login screen
+- Users can navigate to registration if they do not have an account
+- After login, users reach the main product list page
+- Product taps open detail pages; upload button opens a product form
+- Bottom navigation allows access to chat and profile pages
+- Chat list opens individual chat conversations
 
-## Changes from Version 1
-- Added product detail page with name, description, price, and seller
-- Added upload product screen with fields for name, description, and price
-- Switched main page to a stateful workflow to support adding new products
-- Introduced more realistic navigation beyond the initial screen
+## Changes from Version 2
+- Added registration screen and account creation flow
+- Added chat screen with a list of conversations
+- Added individual chat screen for message exchange
+- Added profile screen with sections for articles, favorites, and purchases
+- Expanded navigation routes to connect more screens in the app
 
 ## How to Run
 1. Open this folder in a terminal
@@ -32,4 +36,4 @@ This version is designed to help users interact more meaningfully with the marke
 3. Run `flutter run`
 
 ## Notes
-This version still uses local app state only and does not include the chat or profile screens yet.
+This version is intended to represent the current working app state and is the most complete user-facing release in this series.

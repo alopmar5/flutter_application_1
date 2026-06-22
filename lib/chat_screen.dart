@@ -7,7 +7,7 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> chats = [
-      {'usuario': 'user1', 'mensaje': 'Hello!', 'hora': '14:20'},
+      {'usuario': 'user1', 'mensaje': 'Hey there!', 'hora': '14:20'},
       {'usuario': 'user2', 'mensaje': 'How are you?', 'hora': '10:15'},
       {'usuario': 'user3', 'mensaje': 'Good morning!', 'hora': '18:30'},
       {'usuario': 'user4', 'mensaje': 'What’s up?', 'hora': '09:42'},
@@ -31,7 +31,6 @@ class ChatScreen extends StatelessWidget {
             subtitle: Text(chat['mensaje']!),
             trailing: Text(chat['hora']!),
             onTap: () {
-              // Navigate to the individual chat screen
               Navigator.push(
                 context,
                 MaterialPageRoute(

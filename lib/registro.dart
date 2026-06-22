@@ -9,7 +9,7 @@ class Registro extends StatefulWidget {
 }
 
 class _RegistroState extends State<Registro> {
-  final TextEditingController userController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
 
@@ -22,7 +22,7 @@ class _RegistroState extends State<Registro> {
     }
 
     DataStore.usuarios.add({
-      'usuario': userController.text,
+      'usuario': usernameController.text,
       'contrasena': passwordController.text,
     });
 
@@ -59,7 +59,7 @@ class _RegistroState extends State<Registro> {
                   ),
                   const SizedBox(height: 16),
                   TextField(
-                    controller: userController,
+                    controller: usernameController,
                     decoration: const InputDecoration(
                       labelText: 'Username',
                       border: OutlineInputBorder(),
@@ -79,7 +79,7 @@ class _RegistroState extends State<Registro> {
                     controller: confirmPasswordController,
                     obscureText: true,
                     decoration: const InputDecoration(
-                      labelText: 'Confirm password',
+                      labelText: 'Confirm Password',
                       border: OutlineInputBorder(),
                     ),
                   ),

@@ -86,14 +86,14 @@ class SubirProductoStateless extends StatelessWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                final newProduct = {
+                final nuevoProducto = {
                   'usuario': 'currentUser',
                   'nombreProducto': nombreController.text,
                   'descripcion': descripcionController.text,
                   'precio': precioController.text,
                 };
 
-                onProductoSubido(newProduct);
+                onProductoSubido(nuevoProducto);
                 Navigator.pop(context);
               },
               child: const Text('Publish'),

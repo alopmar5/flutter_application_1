@@ -39,7 +39,6 @@ class _PerfilScreenState extends State<PerfilScreen> {
       ),
       body: Column(
         children: [
-          // Profile header
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -66,7 +65,6 @@ class _PerfilScreenState extends State<PerfilScreen> {
             ),
           ),
           const Divider(),
-          // Tabs
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -136,7 +134,6 @@ class _PerfilScreenState extends State<PerfilScreen> {
             ],
           ),
           const Divider(),
-          // Current content (Items, Favorites, Purchased)
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.all(16.0),

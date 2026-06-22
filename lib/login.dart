@@ -10,22 +10,23 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _usuarioController = TextEditingController();
-  final TextEditingController _contrasenaController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   void _login() {
-    final usuario = _usuarioController.text;
-    final contrasena = _contrasenaController.text;
+    final username = _usernameController.text;
+    final password = _passwordController.text;
 
-    if (usuario.isEmpty || contrasena.isEmpty) {
+    if (username.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please fill in all fields')),
       );
       return;
     }
 
+    // Verify credentials
     final registeredUser = DataStore.usuarios.firstWhere(
-      (u) => u['usuario'] == usuario && u['contrasena'] == contrasena,
+      (u) => u['usuario'] == username && u['contrasena'] == password,
       orElse: () => {},
     );
 
@@ -71,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 16),
                   TextField(
-                    controller: _usuarioController,
+                    controller: _usernameController,
                     decoration: const InputDecoration(
                       labelText: 'Username',
                       border: OutlineInputBorder(),
@@ -79,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 16),
                   TextField(
-                    controller: _contrasenaController,
+                    controller: _passwordController,
                     obscureText: true,
                     decoration: const InputDecoration(
                       labelText: 'Password',

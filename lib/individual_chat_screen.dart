@@ -59,15 +59,14 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
                 final mensaje = mensajes[index];
                 final esMio = mensaje['esMio'] == 'true';
 
-                // Show the date when it changes
-                bool mostrarFecha = index == 0 ||
+                bool showDate = index == 0 ||
                     mensajes[index]['fecha'] != mensajes[index - 1]['fecha'];
 
                 return Column(
                   crossAxisAlignment:
                       esMio ? CrossAxisAlignment.end : CrossAxisAlignment.start,
                   children: [
-                    if (mostrarFecha)
+                    if (showDate)
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Center(

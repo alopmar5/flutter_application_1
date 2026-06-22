@@ -22,7 +22,7 @@ class ProductoDetalle extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context); // Return to previous page
+            Navigator.pop(context);
           },
         ),
       ),
@@ -31,11 +31,10 @@ class ProductoDetalle extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Product image
             Container(
               height: 200,
               width: 200,
-              color: Colors.grey[300], // Grey background placeholder
+              color: Colors.grey[300],
               child: const Center(
                 child: Icon(
                   Icons.image,
@@ -45,43 +44,38 @@ class ProductoDetalle extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            // Seller name and chat button
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('@$usuario', style: const TextStyle(fontSize: 16)),
                 ElevatedButton(
                   onPressed: () {
-                    // Logic to open chat
+                    // Logic to open a chat
                   },
                   child: const Text('Chat'),
                 ),
               ],
             ),
             const SizedBox(height: 16),
-            // Product name
             Text(
               nombreProducto,
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            // Price
             Text(
               '$precio€',
               style: const TextStyle(fontSize: 18, color: Colors.green),
             ),
             const SizedBox(height: 16),
-            // Description
             Text(
               descripcion,
               style: const TextStyle(fontSize: 16, color: Colors.grey),
               textAlign: TextAlign.center,
             ),
             const Spacer(),
-            // Buy button
             ElevatedButton(
               onPressed: () {
-                // Logic to perform purchase
+                // Logic to complete the purchase
               },
               child: const Text('Buy'),
             ),
