@@ -24,13 +24,19 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    // Verify credentials
+    // Verificar credenciales en la lista global de usuarios
     final registeredUser = DataStore.usuarios.firstWhere(
       (u) => u['usuario'] == username && u['contrasena'] == password,
       orElse: () => {},
     );
 
     if (registeredUser.isNotEmpty) {
+      // GUARDAR SESIÓN ACTIVA: Guardamos el usuario que acaba de loguearse
+      DataStore.usuarioLogueado = {
+        'usuario': registeredUser['usuario']!,
+        'nombreCompleto': registeredUser['nombreCompleto'] ?? registeredUser['usuario']!,
+      };
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const PaginaPrincipal()),

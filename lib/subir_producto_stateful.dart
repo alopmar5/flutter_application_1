@@ -12,7 +12,6 @@ class _SubirProductoStatefulState extends State<SubirProductoStateful> {
   final TextEditingController _nombreController = TextEditingController();
   final TextEditingController _descripcionController = TextEditingController();
   final TextEditingController _precioController = TextEditingController();
-  String _selectedCurrency = 'EUR';
 
   void _publishProduct() {
     final nombre = _nombreController.text;
@@ -26,18 +25,19 @@ class _SubirProductoStatefulState extends State<SubirProductoStateful> {
       return;
     }
 
+    // REQUERIMIENTO 1: Guardamos en la base de datos centralizada usando el usuario activo
     DataStore.productos.add({
-      'usuario': 'current_user',
+      'usuario': DataStore.usuarioLogueado['usuario']!,
       'nombreProducto': nombre,
       'descripcion': descripcion,
-      'precio': '$precio $_selectedCurrency',
+      'precio': precio,
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Product published successfully')),
     );
 
-    Navigator.pop(context);
+    Navigator.pop(context, true); // Retornamos true para indicarle a la pantalla anterior que refresque
   }
 
   @override
@@ -85,35 +85,13 @@ class _SubirProductoStatefulState extends State<SubirProductoStateful> {
                 ),
               ),
               const SizedBox(height: 16),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _precioController,
-                      keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        labelText: 'Price',
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  DropdownButton<String>(
-                    value: _selectedCurrency,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        _selectedCurrency = newValue!;
-                      });
-                    },
-                    items: <String>['EUR', 'USD', 'MXN']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ],
+              TextField(
+                controller: _precioController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'Price (€)',
+                  border: OutlineInputBorder(),
+                ),
               ),
               const SizedBox(height: 16),
               ElevatedButton(

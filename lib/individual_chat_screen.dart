@@ -32,6 +32,35 @@ class _IndividualChatScreenState extends State<IndividualChatScreen> {
         });
       });
       mensajeController.clear();
+
+      // Bot automatic response after 1.5 seconds
+      Future.delayed(const Duration(milliseconds: 1500), () {
+        if (mounted) {
+          setState(() {
+            mensajes.add({
+              'mensaje': _obtenerRespuestaBot(texto),
+              'hora': TimeOfDay.now().format(context),
+              'esMio': 'false',
+              'fecha': 'Today',
+            });
+          });
+        }
+      });
+    }
+  }
+
+  // Bot logic responding in English based on user keywords
+  String _obtenerRespuestaBot(String mensajeUsuario) {
+    final textoClave = mensajeUsuario.toLowerCase();
+    
+    if (textoClave.contains('hello') || textoClave.contains('hi') || textoClave.contains('hola')) {
+      return "Hello! I am @${widget.usuario}'s virtual assistant. Are you interested in any of my products?";
+    } else if (textoClave.contains('price') || textoClave.contains('how much') || textoClave.contains('cost')) {
+      return "The price is the one listed in the post, but I might accept reasonable offers.";
+    } else if (textoClave.contains('available') || textoClave.contains('stock')) {
+      return "Yes, of course! It is still available. You can tap the 'Buy' button if you want to purchase it.";
+    } else {
+      return "Thank you for your message. I have received it correctly and I will get back to you personally as soon as I am online. Have a great day!";
     }
   }
 

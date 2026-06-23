@@ -4,7 +4,6 @@ import 'registro.dart';
 import 'pagina_principal.dart';
 import 'perfil.dart';
 import 'chat_screen.dart';
-import 'subir_producto_stateless.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,16 +19,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const LoginScreen(),
-        '/registro': (context) => const Registro(),
+        '/registro': (context) => const Registro(), // Volvemos a 'Registro'
         '/pagina_principal': (context) => const PaginaPrincipal(),
         '/perfil': (context) => const PerfilScreen(),
         '/chats': (context) => const ChatScreen(),
-        '/subir_producto': (context) => SubirProductoStateless(
-          productos: [],
-          onProductoSubido: (nuevoProducto) {
-            // Handle uploaded product if needed
-          },
-        ),
       },
     );
   }
