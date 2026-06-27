@@ -1,4 +1,6 @@
 ﻿# Version 3 - Complete App with Registration, Chat, and Profile
+## Authors
+Alba Lopez Martinez, Irene Ferrandez Colomer, Maria Garcia Vega and Alba Lozano Guixa
 
 ## Objective
 This version is the current full application state. It includes registration, login, a product marketplace, chat screens, profile views, and product upload functionality.
